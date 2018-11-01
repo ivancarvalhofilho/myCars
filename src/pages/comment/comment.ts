@@ -50,7 +50,7 @@ export class CommentPage {
 
   salvar() {
     if (this.comentario._comentario.trim() == "") {
-      let toast = this.toastCtrl.create({
+      this.toastCtrl.create({
         duration: 3000,
         message: "Ops... seu comentário está vazio!"
       }).present();
@@ -59,7 +59,7 @@ export class CommentPage {
       this.veiculo._comentarios.push(this.comentario);
       this.api.atualizarVeiculo(this.veiculo).subscribe(() => {
         this.comentario = new Comentario();
-        let toast = this.toastCtrl.create({
+        this.toastCtrl.create({
           duration: 3000,
           message: "Comentário adicionado com sucesso!"
         }).present();

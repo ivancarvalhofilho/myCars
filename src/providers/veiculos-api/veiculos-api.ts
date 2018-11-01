@@ -23,7 +23,7 @@ export class VeiculosApiProvider {
     return this.http.
       get(this.API_URL_BASE + "veiculos").
       map(veiculos => {        
-        return (veiculos as any).map((veiculo) => Veiculo.copia(veiculo));
+        return (veiculos as any).map((veiculo) => Veiculo.copia_sem_comentarios(veiculo));
       });
   }
 
