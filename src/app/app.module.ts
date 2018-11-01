@@ -6,25 +6,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { VeiculosApiProvider } from '../providers/veiculos-api/veiculos-api';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DetailsPage } from '../pages/details/details';
+import { CommentPage } from '../pages/comment/comment';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailsPage,
+    CommentPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailsPage,
+    CommentPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClient,
+    VeiculosApiProvider
   ]
 })
 export class AppModule {}

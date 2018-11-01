@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Comentários</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let comentario of _veiculo._comentarios">
+    <ion-card-content>
+      <h2><strong>{{comentario._autor}} ({{comentario._data | date:"short" }})</strong></h2>
+      <p>{{comentario._comentario}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

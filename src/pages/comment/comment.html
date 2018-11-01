@@ -1,0 +1,35 @@
+<!--
+  Generated template for the CommentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Comentar</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="salvar()">
+        Salvar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Nome (opcional)</ion-label>
+      <ion-input type="text" [(ngModel)]="_comentario._autor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Comentário</ion-label>
+      <ion-textarea [(ngModel)]="_comentario._comentario"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
