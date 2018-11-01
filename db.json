@@ -1,1 +1,16 @@
-// todo
+{
+    "veiculos": [
+      { "id": 1, "modelo": "Mobi", "marca": "FIAT",  "img": "https://abrilquatrorodas.files.wordpress.com/2018/06/fiat-mobi-easy-comfort-2019.jpg?quality=70&strip=info"},
+      { "id": 2, "modelo": "Cruze", "marca": "Chevrolet",  "img": "http://s2.glbimg.com/eonOdpJZ2TZoPonTRx6voPvyAhI=/620x400/e.glbimg.com/og/ed/f/original/2016/05/30/dinamica_002.jpg"},
+      { "id": 3, "modelo": "VW", "marca": "Polo",  "img": "https://cdn-motorshow-ssl.akamaized.net/wp-content/uploads/sites/2/2017/03/5_ms404_capa_polo1-696x464.jpg"},
+      { "id": 4, "modelo": "Hyundai", "marca": "HB20",  "img": "http://s2.glbimg.com/zPsMDffgQJhqx81wZlPYg-q4sQs=/e.glbimg.com/og/ed/f/original/2014/10/24/hyundai_hb20_1.png"},
+      { "id": 5, "modelo": "Renault", "marca": "Duster",  "img": "https://s2.glbimg.com/M_UU3s43c49Qnk3J1_Fu3Z3ckRA=/e.glbimg.com/og/ed/f/original/2018/02/05/renault-duster-cvt_2.jpg"}                  
+    ],
+    "comentarios": [
+      {"id": 1, "autor": "Paulo", "comentario": "Muito econômico! Fiz 18km/l na estrada :)", "data": "11/01/2018 01:10:00",  "veiculoId": 1},
+      {"id": 2, "autor": "José", "comentario": "Bebe demais :O", "data": "11/01/2018 01:15:00", "veiculoId": 2},
+      {"id": 3, "autor": "Francisco", "comentario": "Boa performance, principalmemte, em ultrapassagens!", "data": "11/01/2018 10:10:00", "veiculoId": 2},
+      {"id": 4, "autor": "Pedro", "comentario": "É um GOL muito mais caro...", "data": "10/01/2018 01:10:00", "veiculoId": 3},
+      {"id": 5, "autor": "Maria", "comentario": "Dá muita manutenção...", "data": "01/01/2018 01:10:00", "veiculoId": 5}
+    ]
+  }
