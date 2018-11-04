@@ -1,5 +1,9 @@
 # Simple Converter
 
+Trata-se de um aplicativo que apresenta uma lista de carros, com seus respectivos comentários.
+
+![Screecast](https://github.com/pauloafpjunior/myCars/blob/master/Peek%2001-11-2018%2016-12.gif?raw=true)
+
 ## Instalando
 
 Baixe ou clone o repositório em seu PC.
