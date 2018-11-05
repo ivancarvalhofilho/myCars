@@ -54,11 +54,17 @@
       ]
     },
     {
+      "comentarios": [
+        {
+          "autor": "Márcio",
+          "comentario": "Manutenção barata!",
+          "data": "2018-11-05T17:16:21.803Z"
+        }
+      ],
       "id": 4,
       "modelo": "HB20",
       "marca": "Hyundai",
-      "img": "http://s2.glbimg.com/zPsMDffgQJhqx81wZlPYg-q4sQs=/e.glbimg.com/og/ed/f/original/2014/10/24/hyundai_hb20_1.png",
-      "comentarios": []
+      "img": "http://s2.glbimg.com/zPsMDffgQJhqx81wZlPYg-q4sQs=/e.glbimg.com/og/ed/f/original/2014/10/24/hyundai_hb20_1.png"
     },
     {
       "id": 5,

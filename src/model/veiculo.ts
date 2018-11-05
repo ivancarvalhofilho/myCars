@@ -17,16 +17,7 @@ export class Veiculo {
             veiculo.comentarios.push(Comentario.copia(comentario))
         });
         return veiculo;
-    }
-
-    static copia_sem_comentarios(dados: Object): Veiculo {
-        let veiculo: Veiculo = new Veiculo();
-        veiculo.id = dados['id'];
-        veiculo.modelo = dados['modelo'];
-        veiculo.marca = dados['marca'];
-        veiculo.img = dados['img'];        
-        return veiculo;
-    }
+    }    
 
     set _comentarios(comentarios: Array<Comentario>) {
         this.comentarios = comentarios;

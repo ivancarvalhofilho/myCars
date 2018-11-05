@@ -41,7 +41,7 @@ export class HomePage {
     });
   }
 
-  carregarLista(dados) {
+  carregarLista(dados: any) {
     dados.map(
       item => this.veiculos.push(Veiculo.copia(item))
     );
