@@ -11,7 +11,7 @@ export class RestApiProvider {
     return this.http.get(this.API_URL_BASE + "veiculos");
   }
 
-  obterVeiculo(id: number): any {
+  obterVeiculo(id: number): Observable<any> {
     return this.http.get(this.API_URL_BASE + "veiculos/" + id);
   }
 

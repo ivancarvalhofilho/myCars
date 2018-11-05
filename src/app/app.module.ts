@@ -6,11 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { VeiculosApiProvider } from '../providers/veiculos-api/veiculos-api';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetailsPage } from '../pages/details/details';
 import { CommentPage } from '../pages/comment/comment';
-import { RestProvider } from '../providers/rest/rest';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 
 @NgModule({
@@ -37,8 +35,6 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
-    VeiculosApiProvider,
-    RestProvider,
     RestApiProvider
   ]
 })
