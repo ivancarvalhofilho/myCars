@@ -10,6 +10,8 @@ import { VeiculosApiProvider } from '../providers/veiculos-api/veiculos-api';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetailsPage } from '../pages/details/details';
 import { CommentPage } from '../pages/comment/comment';
+import { RestProvider } from '../providers/rest/rest';
+import { RestApiProvider } from '../providers/rest-api/rest-api';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { CommentPage } from '../pages/comment/comment';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
-    VeiculosApiProvider
+    VeiculosApiProvider,
+    RestProvider,
+    RestApiProvider
   ]
 })
 export class AppModule {}

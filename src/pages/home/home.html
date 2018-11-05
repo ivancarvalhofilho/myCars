@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="atualizarTela($event)">
+    <ion-refresher-content refreshingText="Buscando veículos...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-card *ngFor="let veiculo of _veiculos">
     <ion-card-content (click)="irParaVerComentarios(veiculo._id)">
       <ion-card-title>
@@ -15,15 +20,12 @@
       <img src="{{veiculo._img}}" />
     </ion-card-content>
     <ion-row>
-        <ion-col>
-          <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(veiculo._id)">
-            <ion-icon name="chatbubbles"></ion-icon>
-            Comentar
-          </button>
-        </ion-col>
-      </ion-row>
+      <ion-col>
+        <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(veiculo._id)">
+          <ion-icon name="chatbubbles"></ion-icon>
+          Comentar
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-card>
-  
-
-
 </ion-content>

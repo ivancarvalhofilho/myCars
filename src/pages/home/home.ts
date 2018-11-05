@@ -1,6 +1,6 @@
-import { VeiculosApiProvider } from './../../providers/veiculos-api/veiculos-api';
+import { RestApiProvider } from './../../providers/rest-api/rest-api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { Veiculo } from '../../model/veiculo';
 import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
@@ -11,9 +11,9 @@ import { CommentPage } from '../comment/comment';
 })
 export class HomePage {
 
-  private veiculos: Veiculo[];
+  private veiculos: Array<Veiculo>;
 
-  set _veiculos(veiculos: Veiculo[]) {
+  set _veiculos(veiculos: Array<Veiculo>) {
     this.veiculos = veiculos;
   }
 
@@ -21,12 +21,12 @@ export class HomePage {
     return this.veiculos;
   }
 
-  constructor(private navCtrl: NavController, private api: VeiculosApiProvider) {
-    this._veiculos = null;
+  constructor(private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
+    this.veiculos = new Array<Veiculo>();
   }
 
   ionViewDidEnter() {
-    this.api.obterVeiculos().subscribe(veiculos => this._veiculos = veiculos);
+    this.atualizarListaVeiculos();
   }
 
   irParaVerComentarios(id: number) {
@@ -39,5 +39,39 @@ export class HomePage {
     this.navCtrl.push(CommentPage, {
       veiculoId: id
     });
+  }
+
+  carregarLista(dados) {
+    dados.map(
+      item => this.veiculos.push(Veiculo.copia(item))
+    );
+  }
+
+  exibirErro() {
+    this.toastCtrl.create({
+      duration: 3000,
+      message: "Erro ao carregar lista de veículos!"
+    }).present();
+  }
+
+  atualizarListaVeiculos(refresher?) {
+    this.api.obterVeiculos().subscribe(
+      dados => {
+        this.carregarLista(dados);
+        if (refresher) {
+          refresher.complete();
+        }
+      },
+      () => {
+        this.exibirErro();
+        if (refresher) {
+          refresher.complete();
+        }
+      }
+    );
+  }
+
+  atualizarTela(refresher) {
+    this.atualizarListaVeiculos(refresher);
   }
 }

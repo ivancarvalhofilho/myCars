@@ -2,7 +2,7 @@ import { Comentario } from './../../model/comentario';
 import { Component } from '@angular/core';
 import { NavParams, ToastController } from 'ionic-angular';
 import { Veiculo } from '../../model/veiculo';
-import { VeiculosApiProvider } from '../../providers/veiculos-api/veiculos-api';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 @Component({
   selector: 'page-comment',
@@ -38,26 +38,36 @@ export class CommentPage {
     return this.veiculoId;
   }
 
-  constructor(private navParams: NavParams, private api: VeiculosApiProvider, private toastCtrl: ToastController) {
+  constructor(private navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
     this.veiculoId = this.navParams.get("veiculoId");
     this.veiculo = new Veiculo();
     this.comentario = new Comentario();
   }
 
   ionViewDidEnter() {
-    this.api.obterVeiculo(this.veiculoId).subscribe(veiculo => this.veiculo = veiculo);
+    this.api.obterVeiculo(this.veiculoId).subscribe(
+      item => this.veiculo = Veiculo.copia(item),
+      () => this.exibirErro()
+    );
+  }
+
+  exibirErro() {
+    this.toastCtrl.create({
+      duration: 3000,
+      message: "Erro ao carregar dados do veículo!"
+    }).present();
   }
 
   salvar() {
     if (this.comentario._comentario.trim() == "") {
       this.toastCtrl.create({
         duration: 3000,
-        message: "Ops... seu comentário está vazio!"
+        message: "Ops... seu comentário não pode estar vazio!"
       }).present();
     } else {
       this.comentario._data = new Date();
       this.veiculo._comentarios.push(this.comentario);
-      this.api.atualizarVeiculo(this.veiculo).subscribe(() => {
+      this.api.atualizarVeiculo(this.veiculo._id, this.veiculo).subscribe(() => {
         this.comentario = new Comentario();
         this.toastCtrl.create({
           duration: 3000,

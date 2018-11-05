@@ -1,7 +1,7 @@
-import { VeiculosApiProvider } from './../../providers/veiculos-api/veiculos-api';
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ToastController } from 'ionic-angular';
 import { Veiculo } from '../../model/veiculo';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 @Component({
   selector: 'page-details',
@@ -29,12 +29,22 @@ export class DetailsPage {
     return this.veiculoId;
   }
 
-  constructor(private navParams: NavParams, private api: VeiculosApiProvider) {
+  constructor(private navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
     this.veiculoId = this.navParams.get("veiculoId");
     this.veiculo = new Veiculo();
   }
   
   ionViewDidEnter(){
-    this.api.obterVeiculo(this.veiculoId).subscribe(veiculo => this.veiculo = veiculo);
+    this.api.obterVeiculo(this.veiculoId).subscribe(
+      item => this.veiculo = Veiculo.copia(item),
+      () => this.exibirErro()
+    );
+  }
+
+  exibirErro() {
+    this.toastCtrl.create({
+      duration: 3000,
+      message: "Erro ao carregar dados do veículo!"
+    }).present();
   }
 }
