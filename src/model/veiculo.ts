@@ -7,7 +7,7 @@ export class Veiculo {
     private img: string;
     private comentarios: Array<Comentario> = new Array<Comentario>();
 
-    static copia(dados: Object): Veiculo {
+    static copia(dados: any): Veiculo {
         let veiculo: Veiculo = new Veiculo();
         veiculo.id = dados['id'];
         veiculo.modelo = dados['modelo'];

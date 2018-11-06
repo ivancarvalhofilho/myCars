@@ -9,7 +9,7 @@ export class Comentario {
         this.comentario = "";
     }
 
-    static copia(dados: Object): Comentario {
+    static copia(dados: any): Comentario {
         let comment: Comentario = new Comentario();
         comment.id = dados['id'];
         comment.autor = dados['autor'];
