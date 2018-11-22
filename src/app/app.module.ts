@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetailsPage } from '../pages/details/details';
 import { CommentPage } from '../pages/comment/comment';
@@ -15,6 +16,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
   declarations: [
     MyApp,
     HomePage,
+    LoginPage,
     DetailsPage,
     CommentPage
   ],
@@ -26,7 +28,8 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePage,    
+    LoginPage,
     DetailsPage,
     CommentPage
   ],
