@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-<ion-list>
+<ion-list class="body">
 
   <ion-item>
     <ion-label fixed>Username</ion-label>
@@ -26,8 +26,8 @@
     <ion-input type="password"></ion-input>
   </ion-item>
 
-  <div padding>
-    <button (click)="irParaVerComentarios()" ion-button color="primary" block>Sign In</button>
-  </div>
+  <button (click)="irParaVerComentarios()" ion-button color="primary" block>Sign In</button>
+  <a (click)="irParaCadastrarConta()" style="text-decoration: underline">Criar nova conta</a>
+
 </ion-list>
 </ion-content>

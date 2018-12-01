@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { CadastroContaPage } from '../cadastro-conta/cadastro-conta';
+import { TestePage } from '../teste/teste';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,5 +26,8 @@ export class LoginPage {
   }
   irParaVerComentarios() {
     this.navCtrl.push(HomePage);
+  }
+  irParaCadastrarConta() {
+      this.navCtrl.push(CadastroContaPage);
   }
 }

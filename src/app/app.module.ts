@@ -11,6 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetailsPage } from '../pages/details/details';
 import { CommentPage } from '../pages/comment/comment';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
+import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     HomePage,
     LoginPage,
     DetailsPage,
+    CadastroContaPage,
     CommentPage
   ],
   imports: [
@@ -31,6 +33,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     HomePage,    
     LoginPage,
     DetailsPage,
+    CadastroContaPage,
     CommentPage
   ],
   providers: [

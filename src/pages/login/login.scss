@@ -1,3 +1,7 @@
-page-login {
-
+.body {
+    display:flex;
+    justify-content: center space-evenly;
+    align-items: center;
+    flex-flow: column;
+    height: 50vh;
 }
