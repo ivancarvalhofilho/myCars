@@ -11,8 +11,24 @@
   </ion-navbar>
 
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content >
+    <ion-list class="body">
+        <ion-item>
+            <ion-label fixed>Email</ion-label>
+            <ion-input [(ngModel)]="usuario.email" type="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Senha</ion-label>
+            <ion-input [(ngModel)]="usuario.senha" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Confirmação</ion-label>
+            <ion-input [(ngModel)]="usuario.senhaConfirm" type="password"></ion-input> 
+        </ion-item>
+        
+        <div class="botoes">
+            <button (click)="this.navCtrl.pop()" ion-button color="danger" block>Cancelar</button>
+            <button (click)="cadastrar()" ion-button color="secondary" block>Cadastrar</button>
+        </div>
+    </ion-list>
 </ion-content>
