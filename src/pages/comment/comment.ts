@@ -45,7 +45,7 @@ export class CommentPage {
   }
 
   ionViewDidEnter() {
-    this.api.obterVeiculo(this.veiculoId).subscribe(
+    this.api.obterJogo(this.veiculoId).subscribe(
       item => this.veiculo = Jogo.copia(item),
       () => this.exibirErro()
     );
