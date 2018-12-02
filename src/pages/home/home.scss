@@ -1,3 +1,31 @@
-page-home {
+.navbar-content {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly ;
+}
 
+.sair {
+    width: 20%;
+}
+
+.asd {
+    width: 40%;
+}
+.asd input{
+    border-radius: 3px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.searchbar-search-icon{
+    width: 0 !important;
+    height: 0 !important;
+    background-size: 0 !important;
+}
+.searchbar-input {
+    height: 35px !important;
+}
+.navbar-title{
+    font-size: 20px;
 }

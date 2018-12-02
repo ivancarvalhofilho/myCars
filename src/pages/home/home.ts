@@ -12,6 +12,7 @@ import { CommentPage } from '../comment/comment';
 export class HomePage {
 
   private veiculos: Array<Veiculo>;
+  private veiculosFiltrados: Array<Veiculo>;
 
   set _veiculos(veiculos: Array<Veiculo>) {
     this.veiculos = veiculos;
@@ -21,8 +22,17 @@ export class HomePage {
     return this.veiculos;
   }
 
+  set _veiculosFiltrados(veiculosFiltrados: Array<Veiculo>) {
+      this.veiculosFiltrados = veiculosFiltrados;
+  }
+
+    get _veiculosFiltrados() {
+        return this.veiculosFiltrados;
+  }
+
   constructor(private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
     this.veiculos = new Array<Veiculo>();
+      this.veiculosFiltrados = new Array<Veiculo>();
   }
 
   ionViewDidEnter() {
@@ -44,6 +54,9 @@ export class HomePage {
   carregarLista(dados: any) {
     dados.map(
       item => this.veiculos.push(Veiculo.copia(item))
+    );
+    dados.map(
+      item => this.veiculosFiltrados.push(Veiculo.copia(item))
     );
   }
 
@@ -74,4 +87,16 @@ export class HomePage {
   atualizarTela(refresher) {
     this.atualizarListaVeiculos(refresher);
   }
+
+    filterItems(ev: any) {
+        let val = ev.target.value;
+
+        if (val && val.trim() !== '') {
+            this.veiculosFiltrados = this.veiculos.filter(function (item) {
+                return (item._modelo + item._marca).toLowerCase().includes(val.toLowerCase());
+            });
+        } else {
+            this.veiculosFiltrados = this.veiculos;
+        }
+    }
 }

@@ -1,8 +1,16 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      My Cars
-    </ion-title>
+  <ion-navbar  class="navbar" hideBackButton="true">
+    <div class="navbar-content">
+        <span class="navbar-title">iSteam</span>
+        <ion-searchbar 
+            class="asd" 
+            placeholder="Filtrar..."
+            [(ngModel)]="myInput" 
+            (ionInput)="filterItems($event)" 
+            (ionCancel)="filterItems($event)">
+        </ion-searchbar>
+        <button (click)="this.navCtrl.pop()" class="sair" ion-button color="danger" block>Sair</button>
+    </div>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +20,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let veiculo of _veiculos">
+  <ion-card *ngFor="let veiculo of _veiculosFiltrados">
     <ion-card-content (click)="irParaVerComentarios(veiculo._id)">
       <ion-card-title>
         {{veiculo._marca}} {{veiculo._modelo}}
