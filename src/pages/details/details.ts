@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, ToastController } from 'ionic-angular';
-import { Veiculo } from '../../model/veiculo';
+import { Jogo } from '../../model/jogo';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 @Component({
@@ -9,34 +9,34 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
 })
 export class DetailsPage {
 
-  private veiculoId: number;
-  private veiculo: Veiculo;
+  private jogoId: string;
+  private jogo: Jogo;
 
   
-  set _veiculo(veiculo: Veiculo) {
-    this.veiculo = veiculo;
+  set _jogo(jogo: Jogo) {
+    this.jogo = jogo;
   }
 
-  get _veiculo() {
-    return this.veiculo;
+  get _jogo() {
+    return this.jogo;
   }
 
-  set _veiculoId(veiculoId: number) {
-    this.veiculoId = veiculoId;
+  set _jogoId(jogoId: string) {
+    this.jogoId = jogoId;
   }
 
-  get _veiculoId() {
-    return this.veiculoId;
+  get _jogoId() {
+    return this.jogoId;
   }
 
   constructor(private navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
-    this.veiculoId = this.navParams.get("veiculoId");
-    this.veiculo = new Veiculo();
+    this.jogoId = this.navParams.get("jogoId");
+    this.jogo = new Jogo();
   }
   
   ionViewDidEnter(){
-    this.api.obterVeiculo(this.veiculoId).subscribe(
-      item => this.veiculo = Veiculo.copia(item),
+    this.api.obterJogo(this.jogoId).subscribe(
+      item => this.jogo = Jogo.copia(item),
       () => this.exibirErro()
     );
   }

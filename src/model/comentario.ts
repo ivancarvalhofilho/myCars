@@ -1,6 +1,8 @@
 export class Comentario {
-    private id: number;
+    private id: string;
+    private idAutor: string;
     private autor: string;
+    private nota: number;
     private comentario: string;
     private data: Date;
 
@@ -11,14 +13,16 @@ export class Comentario {
 
     static copia(dados: any): Comentario {
         let comment: Comentario = new Comentario();
-        comment.id = dados['id'];
-        comment.autor = dados['autor'];
-        comment.comentario = dados['comentario'];
-        comment.data = new Date(dados['data']);
+        comment.id = dados['_id'];
+        comment.idAutor = dados['idUser'];
+        comment.autor = dados['userName'];
+        comment.nota = dados['rating'];
+        comment.comentario = dados['message'];
+        comment.data = new Date(dados['Created_date']);
         return comment;
     }
 
-    set _id(id: number) {
+    set _id(id: string) {
         this.id = id;
     }
 
@@ -32,6 +36,22 @@ export class Comentario {
 
     get _autor() {
         return this.autor;
+    }
+
+    set _idAutor(autor: string) {
+        this.idAutor = autor;
+    }
+
+    get _idAutor() {
+        return this.idAutor;
+    }
+
+    set _nota(nota: number) {
+        this.nota = nota;
+    }
+
+    get _nota() {
+        return this.nota;
     }
 
     set _comentario(comentario: string) {

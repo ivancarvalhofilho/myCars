@@ -1,7 +1,7 @@
 import { RestApiProvider } from './../../providers/rest-api/rest-api';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { Veiculo } from '../../model/veiculo';
+import { Jogo } from '../../model/jogo';
 import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
 import * as $ from "jquery";
@@ -12,65 +12,68 @@ import * as $ from "jquery";
 })
 export class HomePage {
 
-  private veiculos: Array<Veiculo>;
-  private veiculosFiltrados: Array<Veiculo>;
+  private jogos: Array<Jogo>;
+  private jogosFiltrados: Array<Jogo>;
 
-  set _veiculos(veiculos: Array<Veiculo>) {
-    this.veiculos = veiculos;
+  set _jogos(jogos: Array<Jogo>) {
+    this.jogos = jogos;
   }
 
-  get _veiculos() {
-    return this.veiculos;
+  get _jogos() {
+    return this.jogos;
   }
 
-  set _veiculosFiltrados(veiculosFiltrados: Array<Veiculo>) {
-      this.veiculosFiltrados = veiculosFiltrados;
+  set _jogosFiltrados(jogosFiltrados: Array<Jogo>) {
+      this.jogosFiltrados = jogosFiltrados;
   }
 
-    get _veiculosFiltrados() {
-        return this.veiculosFiltrados;
+    get _jogosFiltrados() {
+        return this.jogosFiltrados;
   }
 
   constructor(private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
-    this.veiculos = new Array<Veiculo>();
-      this.veiculosFiltrados = new Array<Veiculo>();
+    this.jogos = new Array<Jogo>();
+      this.jogosFiltrados = new Array<Jogo>();
   }
 
   ionViewDidEnter() {
-    this.atualizarListaVeiculos();
+    this.atualizarListaJogos();
   }
 
-  irParaVerComentarios(id: number) {
+  irParaVerComentarios(id: string) {
     this.navCtrl.push(DetailsPage, {
-      veiculoId: id
+      jogoId: id
     });
   }
 
-  irParaAdicionarComentario(id: number) {
+  irParaAdicionarComentario(id: string) {
     this.navCtrl.push(CommentPage, {
-      veiculoId: id
+      jogoId: id
     });
   }
 
   carregarLista(dados: any) {
     dados.map(
-      item => this.veiculos.push(Veiculo.copia(item))
+      item => this.jogos.push(Jogo.copia(item))
     );
     dados.map(
-      item => this.veiculosFiltrados.push(Veiculo.copia(item))
+      item => this.jogosFiltrados.push(Jogo.copia(item))
     );
   }
 
   exibirErro() {
     this.toastCtrl.create({
       duration: 3000,
-      message: "Erro ao carregar lista de veículos!"
+      message: "Erro ao carregar lista de jogos!"
     }).present();
   }
 
-  atualizarListaVeiculos(refresher?) {
-    this.api.obterVeiculos().subscribe(
+  atualizarListaJogos(refresher?) {
+    this.api.obterJogos().subscribe(
       dados => {
+        dados.forEach(element => {
+          console.log(JSON.stringify(element)+"\n")
+        });
         this.carregarLista(dados);
         if (refresher) {
           refresher.complete();
@@ -86,18 +89,18 @@ export class HomePage {
   }
 
   atualizarTela(refresher) {
-    this.atualizarListaVeiculos(refresher);
+    this.atualizarListaJogos(refresher);
   }
 
     filterItems(ev: any) {
         let val = ev.target.value;
 
         if (val && val.trim() !== '') {
-            this.veiculosFiltrados = this.veiculos.filter(function (item) {
-                return (item._modelo + item._marca).toLowerCase().includes(val.toLowerCase());
+            this.jogosFiltrados = this.jogos.filter(function (item) {
+                return (item._nome).toLowerCase().includes(val.toLowerCase());
             });
         } else {
-            this.veiculosFiltrados = this.veiculos;
+            this.jogosFiltrados = this.jogos;
         }
     }
 
@@ -105,11 +108,11 @@ export class HomePage {
         if(codLista == 1){
             $(".botoesRodape > div:first").removeClass("botoesRodape-inativo");
             $(".botoesRodape > div:last").addClass("botoesRodape-inativo");
-            this.veiculosFiltrados = this.veiculos;
+            this.jogosFiltrados = this.jogos;
         } else if (codLista == 2) {
             $(".botoesRodape > div:first").addClass("botoesRodape-inativo");
             $(".botoesRodape > div:last").removeClass("botoesRodape-inativo");
-            this.veiculosFiltrados = this.veiculos.filter(function (item) {
+            this.jogosFiltrados = this.jogos.filter(function (item) {
                 let possui: boolean = false;
                 item._comentarios.forEach(element => {
                     if(element._autor.includes("Paulo")){

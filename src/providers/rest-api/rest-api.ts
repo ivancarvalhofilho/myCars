@@ -4,18 +4,18 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RestApiProvider {
-  private readonly API_URL_BASE: string = "http://localhost:3000/";
+  private readonly API_URL_BASE: string = "https://isteamgames.cleverapps.io/";
   constructor(private http: HttpClient) { }
 
-  obterVeiculos(): Observable<any> {
-    return this.http.get(this.API_URL_BASE + "veiculos");
+  obterJogos(): Observable<any> {
+    return this.http.get(this.API_URL_BASE + "games");
   }
 
-  obterVeiculo(id: number): Observable<any> {
-    return this.http.get(this.API_URL_BASE + "veiculos/" + id);
+  obterJogo(id: string): Observable<any> {
+    return this.http.get(this.API_URL_BASE + "games/" + id);
   }
 
-  atualizarVeiculo(id: number, veiculo: any) {
-    return this.http.put(this.API_URL_BASE + "veiculos/" + id, veiculo);
+  atualizarVeiculo(id: string, veiculo: any) {
+    return this.http.put(this.API_URL_BASE + "games/" + id, veiculo);
   }
 }

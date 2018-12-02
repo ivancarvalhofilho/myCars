@@ -1,7 +1,7 @@
 import { Comentario } from './../../model/comentario';
 import { Component } from '@angular/core';
 import { NavParams, ToastController } from 'ionic-angular';
-import { Veiculo } from '../../model/veiculo';
+import { Jogo } from '../../model/jogo';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 @Component({
@@ -10,8 +10,8 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
 })
 export class CommentPage {
 
-  private veiculoId: number;
-  private veiculo: Veiculo;
+  private veiculoId: string;
+  private veiculo: Jogo;
   private comentario: Comentario;
 
   set _comentario(comentario: Comentario) {
@@ -22,7 +22,7 @@ export class CommentPage {
     return this.comentario;
   }
 
-  set _veiculo(veiculo: Veiculo) {
+  set _veiculo(veiculo: Jogo) {
     this.veiculo = veiculo;
   }
 
@@ -30,7 +30,7 @@ export class CommentPage {
     return this.veiculo;
   }
 
-  set _veiculoId(veiculoId: number) {
+  set _veiculoId(veiculoId: string) {
     this.veiculoId = veiculoId;
   }
 
@@ -40,13 +40,13 @@ export class CommentPage {
 
   constructor(private navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
     this.veiculoId = this.navParams.get("veiculoId");
-    this.veiculo = new Veiculo();
+    this.veiculo = new Jogo();
     this.comentario = new Comentario();
   }
 
   ionViewDidEnter() {
     this.api.obterVeiculo(this.veiculoId).subscribe(
-      item => this.veiculo = Veiculo.copia(item),
+      item => this.veiculo = Jogo.copia(item),
       () => this.exibirErro()
     );
   }
