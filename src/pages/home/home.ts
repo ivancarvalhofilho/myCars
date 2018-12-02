@@ -5,6 +5,7 @@ import { Veiculo } from '../../model/veiculo';
 import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
 import * as $ from "jquery";
+import { DetalheJogoPage } from '../detalhe-jogo/detalhe-jogo';
 
 @Component({
   selector: 'page-home',
@@ -32,19 +33,19 @@ export class HomePage {
   }
 
   constructor(private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
-    this.veiculos = new Array<Veiculo>();
-      this.veiculosFiltrados = new Array<Veiculo>();
+        this.veiculos = new Array<Veiculo>();
+        this.veiculosFiltrados = new Array<Veiculo>();
   }
 
   ionViewDidEnter() {
     this.atualizarListaVeiculos();
   }
 
-  irParaVerComentarios(id: number) {
-    this.navCtrl.push(DetailsPage, {
-      veiculoId: id
-    });
-  }
+    irParaDetalheJogo(id: number) {
+        this.navCtrl.push(DetalheJogoPage, {
+            jogoId: id
+        });
+    }
 
   irParaAdicionarComentario(id: number) {
     this.navCtrl.push(CommentPage, {
@@ -52,14 +53,16 @@ export class HomePage {
     });
   }
 
-  carregarLista(dados: any) {
-    dados.map(
-      item => this.veiculos.push(Veiculo.copia(item))
-    );
-    dados.map(
-      item => this.veiculosFiltrados.push(Veiculo.copia(item))
-    );
-  }
+    carregarLista(dados: any) {
+        this.veiculos = new Array<Veiculo>();
+        this.veiculosFiltrados = new Array<Veiculo>();
+        dados.map(
+            item => this.veiculos.push(Veiculo.copia(item))
+        );
+        dados.map(
+            item => this.veiculosFiltrados.push(Veiculo.copia(item))
+        );
+    }
 
   exibirErro() {
     this.toastCtrl.create({
@@ -101,7 +104,7 @@ export class HomePage {
         }
     }
 
-    trocaListaJogos(html, codLista){
+    trocaListaJogos(codLista){
         if(codLista == 1){
             $(".botoesRodape > div:first").removeClass("botoesRodape-inativo");
             $(".botoesRodape > div:last").addClass("botoesRodape-inativo");

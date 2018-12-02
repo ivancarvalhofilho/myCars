@@ -12,6 +12,7 @@ import { DetailsPage } from '../pages/details/details';
 import { CommentPage } from '../pages/comment/comment';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
+import { DetalheJogoPage } from '../pages/detalhe-jogo/detalhe-jogo';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
     LoginPage,
     DetailsPage,
     CadastroContaPage,
+    DetalheJogoPage,
     CommentPage
   ],
   imports: [
@@ -34,6 +36,7 @@ import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
     LoginPage,
     DetailsPage,
     CadastroContaPage,
+    DetalheJogoPage,
     CommentPage
   ],
   providers: [

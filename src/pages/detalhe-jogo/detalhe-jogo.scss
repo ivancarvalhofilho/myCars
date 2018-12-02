@@ -1,0 +1,32 @@
+.detalheJogo-img {
+    height: 100px; 
+    width: 50%; 
+    position: relative;
+    margin: auto !important;
+}
+.detalheJogo-img > img{
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.detalheJogo > div{
+    margin: 10px;
+}
+
+.mais-comentarios {
+    padding: 5px;
+    float: right;
+    text-decoration: underline;
+    color: blue;
+    position: relative;
+    top: -15px;
+    right: 10px;
+}

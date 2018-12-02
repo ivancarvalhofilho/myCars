@@ -1,0 +1,47 @@
+<!--
+  Generated template for the DetalheJogoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhe do jogo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="detalheJogo">
+        <div class="detalheJogo-img">
+            <img src="{{_veiculo._img}}" />
+        </div>
+        <div>
+            <span>Nome:{{_veiculo._modelo}} {{_veiculo._marca}}</span>
+        </div>
+
+        <div>
+            <span>Descrição:{{_veiculo._modelo}}</span>
+        </div>
+        
+        <div>
+            <span>Categoria:{{_veiculo._marca}}</span>
+        </div>
+
+        <div (click)="irParaVerComentarios(_veiculo._id)">
+            <ion-card *ngFor="let comentario of _veiculo._comentarios; let i = index" [attr.data-index]="i">
+                <ion-card-content *ngIf=" i == 0">
+                    <h2><strong> {{comentario._autor}} ({{comentario._data | date:"short" }})</strong></h2>
+                    <p>{{comentario._comentario}}</p>
+                </ion-card-content>
+            </ion-card>
+            <div class="mais-comentarios"> Ver mais comentários </div>
+        </div>
+
+        <div>
+            <button  ion-button color="primary" block>Criar comentário</button>
+        </div>
+    </div>
+</ion-content>
