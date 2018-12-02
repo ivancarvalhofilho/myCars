@@ -16,21 +16,21 @@
 
 <ion-content>
   <ion-refresher (ionRefresh)="atualizarTela($event)">
-    <ion-refresher-content refreshingText="Buscando veículos...">
+    <ion-refresher-content refreshingText="Buscando jogos...">
     </ion-refresher-content>
   </ion-refresher>
 
     <div style="padding-bottom:50px;">
-        <ion-card *ngFor="let veiculo of _veiculosFiltrados">
-            <ion-card-content (click)="irParaDetalheJogo(veiculo._id)">
+        <ion-card *ngFor="let jogo of _jogosFiltrados">
+            <ion-card-content (click)="irParaVerComentarios(jogo._id)">
                 <div class="cardJogos">
                     <div class="cardJogos-img">
-                        <img src="{{veiculo._img}}" />
+                        <!-- <img src="{{jogo._img}}" /> -->
                     </div>
                     <div class="cardJogos-conteudo">
                         <div class="cardJogos-conteudo-info">
                             <span>
-                                {{veiculo._marca}} {{veiculo._modelo}}
+                                {{jogo._nome}} {{jogo._categoria}}
                             </span>
                             <span>
                                 Nota média
@@ -44,7 +44,7 @@
             </ion-card-content>
             <!-- <ion-row>
                 <ion-col>
-                    <button ion-button full icon-only color="secondary" (click)="   ">
+                    <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(jogo._id)">
                         <ion-icon name="chatbubbles"></ion-icon>
                         Comentar
                     </button>
