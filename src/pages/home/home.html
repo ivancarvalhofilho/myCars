@@ -22,18 +22,32 @@
 
   <ion-card *ngFor="let veiculo of _veiculosFiltrados">
     <ion-card-content (click)="irParaVerComentarios(veiculo._id)">
-      <ion-card-title>
-        {{veiculo._marca}} {{veiculo._modelo}}
-      </ion-card-title>
-      <img src="{{veiculo._img}}" />
+        <div class="cardJogos">
+            <div class="cardJogos-img">
+                <img src="{{veiculo._img}}" />
+            </div>
+            <div class="cardJogos-conteudo">
+                <div class="cardJogos-conteudo-info">
+                    <span>
+                        {{veiculo._marca}} {{veiculo._modelo}}
+                    </span>
+                    <span>
+                        Nota média
+                    </span>
+                </div>
+                <div class="cardJogos-conteudo-icone">
+                    >
+                </div>
+            </div>
+        </div>
     </ion-card-content>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col>
         <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(veiculo._id)">
           <ion-icon name="chatbubbles"></ion-icon>
           Comentar
         </button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </ion-card>
 </ion-content>

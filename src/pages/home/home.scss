@@ -29,3 +29,48 @@
 .navbar-title{
     font-size: 20px;
 }
+
+
+.cardJogos{
+    display: flex;
+}
+
+.cardJogos-img {
+    height: 100px; 
+    width: 50%; 
+    position: relative;
+    margin-right: 10px;
+}
+.cardJogos-img > img{
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.cardJogos-conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.cardJogos-conteudo-info {
+    width: 99%;
+    height: 90%;
+    display: flex;
+    flex-flow: column;
+}
+
+.cardJogos-conteudo-icone {
+    width: 1%;
+    transform: scaleY(3);
+    float: right;
+    filter: opacity(0.5);
+}
