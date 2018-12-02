@@ -4,6 +4,7 @@ import { NavController, ToastController } from 'ionic-angular';
 import { Veiculo } from '../../model/veiculo';
 import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
+import * as $ from "jquery";
 
 @Component({
   selector: 'page-home',
@@ -97,6 +98,27 @@ export class HomePage {
             });
         } else {
             this.veiculosFiltrados = this.veiculos;
+        }
+    }
+
+    trocaListaJogos(html, codLista){
+        if(codLista == 1){
+            $(".botoesRodape > div:first").removeClass("botoesRodape-inativo");
+            $(".botoesRodape > div:last").addClass("botoesRodape-inativo");
+            this.veiculosFiltrados = this.veiculos;
+        } else if (codLista == 2) {
+            $(".botoesRodape > div:first").addClass("botoesRodape-inativo");
+            $(".botoesRodape > div:last").removeClass("botoesRodape-inativo");
+            this.veiculosFiltrados = this.veiculos.filter(function (item) {
+                let possui: boolean = false;
+                item._comentarios.forEach(element => {
+                    if(element._autor.includes("Paulo")){
+                        possui = true;
+                        return 0;
+                    }
+                });
+                return possui;
+            });
         }
     }
 }

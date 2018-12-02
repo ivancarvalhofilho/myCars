@@ -20,34 +20,41 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let veiculo of _veiculosFiltrados">
-    <ion-card-content (click)="irParaVerComentarios(veiculo._id)">
-        <div class="cardJogos">
-            <div class="cardJogos-img">
-                <img src="{{veiculo._img}}" />
-            </div>
-            <div class="cardJogos-conteudo">
-                <div class="cardJogos-conteudo-info">
-                    <span>
-                        {{veiculo._marca}} {{veiculo._modelo}}
-                    </span>
-                    <span>
-                        Nota média
-                    </span>
+    <div style="padding-bottom:50px;">
+        <ion-card *ngFor="let veiculo of _veiculosFiltrados">
+            <ion-card-content (click)="irParaVerComentarios(veiculo._id)">
+                <div class="cardJogos">
+                    <div class="cardJogos-img">
+                        <img src="{{veiculo._img}}" />
+                    </div>
+                    <div class="cardJogos-conteudo">
+                        <div class="cardJogos-conteudo-info">
+                            <span>
+                                {{veiculo._marca}} {{veiculo._modelo}}
+                            </span>
+                            <span>
+                                Nota média
+                            </span>
+                        </div>
+                        <div class="cardJogos-conteudo-icone">
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div class="cardJogos-conteudo-icone">
-                    >
-                </div>
-            </div>
-        </div>
-    </ion-card-content>
-    <!-- <ion-row>
-      <ion-col>
-        <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(veiculo._id)">
-          <ion-icon name="chatbubbles"></ion-icon>
-          Comentar
-        </button>
-      </ion-col>
-    </ion-row> -->
-  </ion-card>
+            </ion-card-content>
+            <!-- <ion-row>
+                <ion-col>
+                    <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(veiculo._id)">
+                        <ion-icon name="chatbubbles"></ion-icon>
+                        Comentar
+                    </button>
+                </ion-col>
+            </ion-row> -->
+        </ion-card>
+    </div>
+
+    <div class="botoesRodape">
+        <div (click)="trocaListaJogos(this, 1)" >Lista de jogos</div>
+        <div (click)="trocaListaJogos(this, 2)" class="botoesRodape-inativo">Meus jogos</div>
+    </div>
 </ion-content>
