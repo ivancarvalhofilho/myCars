@@ -13,6 +13,10 @@ export class RestApiProvider {
     return this.http.post(this.APILogin_URL_BASE + "login", {userEmail: nome, userPassword: senha});
   }
   
+  cadastrar(email: string, nome: string, senha: string): Observable<any> {
+    return this.http.post(this.APILogin_URL_BASE + "user", {name: nome, email: email, password: senha});
+  }
+
   obterJogos(): Observable<any> {
     return this.http.get(this.API_URL_BASE + "games");
   }
