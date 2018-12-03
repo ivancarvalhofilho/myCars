@@ -15,6 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CriarEditarComentarioPage {
     private comentarioUsuarioId: string;
+    private nota: number;
+    private mensagem :string;
+  
+    set _nota(nota: number){
+    this.nota = nota;
+    }
+
+    set _mensagem(mensagem :string){
+      this.mensagem = mensagem;
+    }
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
         this.comentarioUsuarioId = this.navParams.get("comentarioUsuarioId");
@@ -25,7 +35,7 @@ export class CriarEditarComentarioPage {
   }
 
     cadastrarComentario() {
-
+      
         // Se OK, fecha a tela
         this.navCtrl.pop()
     }

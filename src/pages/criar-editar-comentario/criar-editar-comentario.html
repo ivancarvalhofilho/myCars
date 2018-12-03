@@ -18,7 +18,7 @@
         <ion-list>
             <ion-item>
                 <ion-label>Nota</ion-label>
-                <ion-select [(ngModel)]="gaming">
+                <ion-select [(ngModel)]="_nota">
                     <ion-option value="0">0</ion-option>
                     <ion-option value="1">1</ion-option>
                     <ion-option value="2">2</ion-option>
@@ -30,7 +30,7 @@
 
             <ion-item>
                 <ion-label stacked>Mensagem</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input [(ngModel)]="_mensagem" type="text"></ion-input>
             </ion-item>
         </ion-list>
         <div  *ngIf="comentarioUsuarioId == null">

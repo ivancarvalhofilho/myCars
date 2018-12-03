@@ -28,4 +28,12 @@ export class RestApiProvider {
   atualizarVeiculo(id: string, veiculo: any) {
     return this.http.put(this.API_URL_BASE + "games/" + id, veiculo);
   }
+
+  criarComentario(idJogo: string, nota: number, mensagem: string) {
+    return this.http.put(this.API_URL_BASE + "games/rate/" + idJogo, {idUser: idUsuario, userName: userName, rating: nota, message: mensagem});
+  }
+
+  editarComentario(id: string, veiculo: any) {
+    return this.http.put(this.API_URL_BASE + "games/" + id, veiculo);
+  }
 }
