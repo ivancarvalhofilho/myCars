@@ -40,8 +40,13 @@
             <div class="mais-comentarios"> Ver mais comentários </div>
         </div>
 
-        <div>
+        <div *ngIf="!_possuiComentario">
             <button  ion-button color="primary" block>Criar comentário</button>
+        </div>
+
+        <div *ngIf="_possuiComentario">
+            <button  style="margin-bottom:15px; margin-top:15px" ion-button color="secondary" block>Editar comentário</button>
+            <button  ion-button color="danger" block>Excluir comentário</button>
         </div>
     </div>
 </ion-content>
