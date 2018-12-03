@@ -20,6 +20,7 @@ export class DetalheJogoPage {
 
     private jogoId: string;
     private jogo: Jogo;
+    private _possuiComentario: boolean = false;
 
     constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams) {
         this.jogoId = this.navParams.get("jogoId");
@@ -32,7 +33,14 @@ export class DetalheJogoPage {
 
     ionViewDidEnter() {
         this.api.obterJogo(this.jogoId).subscribe(
-            item => this.jogo = Jogo.copia(item)
+            item => this.jogo = Jogo.copia(item),
+            null,
+            () => this.jogo._comentarios.forEach(element => {
+                if(element._autor == "Danilo"){
+                    this.possuiComentario = true; 
+                    return 0;
+                }
+            })
         );
     }
     
@@ -48,5 +56,12 @@ export class DetalheJogoPage {
 
     get _jogo() {
         return this.jogo;
+    }
+
+    get possuiComentario(): boolean {
+        return this._possuiComentario;
+    }
+    set possuiComentario(value: boolean) {
+        this._possuiComentario = value;
     }
 }
