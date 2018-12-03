@@ -51,7 +51,7 @@
 
         <div *ngIf="_possuiComentario">
             <button  (click)="irParaCriarComentario()" style="margin-bottom:15px; margin-top:15px" ion-button color="secondary" block>Editar comentário</button>
-            <button  ion-button color="danger" block>Excluir comentário</button>
+            <button  (click)="deletarComentario()" ion-button color="danger" block>Excluir comentário</button>
         </div>
     </div>
 </ion-content>

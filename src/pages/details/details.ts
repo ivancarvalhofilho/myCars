@@ -44,7 +44,7 @@ export class DetailsPage {
   exibirErro() {
     this.toastCtrl.create({
       duration: 3000,
-      message: "Erro ao carregar dados do veículo!"
+      message: "Erro ao carregar comentarios!"
     }).present();
   }
 }

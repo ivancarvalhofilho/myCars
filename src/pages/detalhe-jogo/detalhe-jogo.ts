@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , ToastController} from 'ionic-angular';
 import { Jogo } from '../../model/jogo'; 
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { DetailsPage } from '../details/details';
@@ -21,12 +21,14 @@ export class DetalheJogoPage {
 
     private jogoId: string;
     private nomeUsuario: string;
+    private userId: string;
     private comentarioUsuarioId: string = null;
     private jogo: Jogo;
     private _possuiComentario: boolean = false;
 
-    constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams, private toastCtrl : ToastController) {
         this.jogoId = this.navParams.get("jogoId");
+        this.userId = this.navParams.get("userId");
         this.nomeUsuario = this.navParams.get("nomeUsuario");
         this.jogo = new Jogo();
     }
@@ -36,12 +38,13 @@ export class DetalheJogoPage {
     }
 
     ionViewDidEnter() {
+        console.log('ionViewDidLoad DetalheJogoPage  '+this.nomeUsuario);
         this.api.obterJogo(this.jogoId).subscribe(
             item => this.jogo = Jogo.copia(item),
             null,
             () => this.jogo._comentarios.forEach(element => {
                 if (element._autor == this.nomeUsuario){
-                    this.comentarioUsuarioId = element._id; 
+                    this.comentarioUsuarioId = element._id;
                     this.possuiComentario = true; 
                     return 0;
                 }
@@ -51,7 +54,7 @@ export class DetalheJogoPage {
 
     irParaCriarComentario () {
         this.navCtrl.push(CriarEditarComentarioPage,{
-            comentarioUsuarioId: this.comentarioUsuarioId
+            userId: this.userId, comentarioUsuarioId: this.comentarioUsuarioId, idJogo: this.jogoId, nomeUsuario: this.nomeUsuario
         });
     }
     
@@ -75,4 +78,25 @@ export class DetalheJogoPage {
     set possuiComentario(value: boolean) {
         this._possuiComentario = value;
     }
+
+    deletarComentario() {
+        console.log(this.jogoId + this.userId)
+        this.api.deletarComentario(this.jogoId,this.userId).subscribe(
+          dados => {
+            console.log(JSON.stringify(dados))
+            if(dados == null){
+              this.toastCtrl.create({
+                duration: 3000,
+                message: "Erro ao deletar comentario!"
+              }).present();
+            }
+            else{
+              this.toastCtrl.create({
+                duration: 3000,
+                message: "Comentario deletado com sucesso!"
+              }).present();
+              this.navCtrl.pop()
+            }
+          });     
+      }
 }

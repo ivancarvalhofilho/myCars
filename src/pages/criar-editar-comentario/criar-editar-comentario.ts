@@ -16,6 +16,7 @@ import { RestApiProvider } from './../../providers/rest-api/rest-api';
 })
 export class CriarEditarComentarioPage {
     private idJogo: string;
+    private userId: string;
     private comentarioUsuarioId: string;
     private nomeUsuario: string;
     private nota: number;
@@ -31,14 +32,17 @@ export class CriarEditarComentarioPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
         this.comentarioUsuarioId = this.navParams.get("comentarioUsuarioId");
+        this.userId = this.navParams.get("userId");
+        this.idJogo = this.navParams.get("idJogo");
+        this.nomeUsuario = this.navParams.get("nomeUsuario");
     }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CriarEditarComentarioPage');
+    console.log('ionViewDidLoad CriarEditarComentarioPage' + this.comentarioUsuarioId);
   }
 
     cadastrarComentario() {
-      this.api.criarComentario(this.idJogo,this.comentarioUsuarioId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
+      this.api.criarComentario(this.idJogo,this.userId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
         dados => {
           console.log(JSON.stringify(dados))
           if(dados == null){
@@ -52,13 +56,13 @@ export class CriarEditarComentarioPage {
               duration: 3000,
               message: "Comentario criado com sucesso!"
             }).present();
-            this.navCtrl.pop()
+            this.navCtrl.pop({})
           }
         });     
     }
 
     editarComentario() {
-      this.api.editarComentario(this.idJogo,this.comentarioUsuarioId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
+      this.api.editarComentario(this.idJogo,this.userId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
         dados => {
           console.log(JSON.stringify(dados))
           if(dados == null){
@@ -71,26 +75,6 @@ export class CriarEditarComentarioPage {
             this.toastCtrl.create({
               duration: 3000,
               message: "Comentario editado com sucesso!"
-            }).present();
-            this.navCtrl.pop()
-          }
-        });     
-    }
-
-    deletarComentario() {
-      this.api.deletarComentario(this.idJogo,this.comentarioUsuarioId).subscribe(
-        dados => {
-          console.log(JSON.stringify(dados))
-          if(dados == null){
-            this.toastCtrl.create({
-              duration: 3000,
-              message: "Erro ao deletar comentario!"
-            }).present();
-          }
-          else{
-            this.toastCtrl.create({
-              duration: 3000,
-              message: "Comentario deletado com sucesso!"
             }).present();
             this.navCtrl.pop()
           }

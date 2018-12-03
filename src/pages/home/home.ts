@@ -47,9 +47,10 @@ export class HomePage {
     this.atualizarListaJogos();
   }
 
-    irParaDetalheJogo(id: number) {
+    irParaDetalheJogo(id: string) {
         this.navCtrl.push(DetalheJogoPage, {
             jogoId: id,
+            userId: this.idUser,
             nomeUsuario: this.userName
         });
     }
@@ -60,11 +61,11 @@ export class HomePage {
         });
     }
 
-    irParaAdicionarComentario(id: string) {
-        this.navCtrl.push(CommentPage, {
-           jogoId: id
-        });
-    }
+    // irParaAdicionarComentario(id: string) {
+    //     this.navCtrl.push(CommentPage, {
+    //        jogoId: id
+    //     });
+    // }
 
     carregarLista(dados: any) {
         this.jogos = new Array<Jogo>();
