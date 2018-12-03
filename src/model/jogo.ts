@@ -11,7 +11,7 @@ export class Jogo {
     static copia(dados: any): Jogo {
         let jogo: Jogo = new Jogo();
         jogo.id = dados['_id'];
-        jogo.descricao = dados['_description'];
+        jogo.descricao = dados['description'];
         jogo.categoria = dados['category'];
         jogo.nome = dados['name'];
         jogo.img = dados['img'];
