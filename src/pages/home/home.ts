@@ -6,6 +6,7 @@ import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
 import * as $ from "jquery";
 import { DetalheJogoPage } from '../detalhe-jogo/detalhe-jogo';
+import { Comentario } from '../../model/comentario';
 
 @Component({
   selector: 'page-home',
@@ -70,11 +71,35 @@ export class HomePage {
         this.jogosFiltrados = new Array<Jogo>();
 
         dados.map(
-            item => this.jogos.push(Jogo.copia(item))
+            item => {
+                this.jogos.push(Jogo.copia(item))
+                this.jogosFiltrados.push(Jogo.copia(item))
+                // this.jogos.forEach(jogo => {
+                //     let notaTotal: number = 0;
+                //     let qtdNotas: number = 0;
+                //     jogo._comentarios.forEach(comentario => {
+                //         qtdNotas++;
+                //         notaTotal += comentario._nota;
+                //     });
+                //     jogo.notaMedia = notaTotal / qtdNotas;
+                // })
+            }
         );
-        dados.map(
-            item => this.jogosFiltrados.push(Jogo.copia(item))
-        );
+        
+
+        // dados.map(
+        //     item => this.jogosFiltrados.push(Jogo.copia(item)),
+        //     null,
+        //     () => this.jogosFiltrados.forEach(jogo => {
+        //         let notaTotal : number = 0;
+        //         let qtdNotas : number = 0;
+        //         jogo._comentarios.forEach(comentario => {
+        //             qtdNotas++;
+        //             notaTotal += comentario._nota;
+        //         });
+        //         jogo.notaMedia = notaTotal / qtdNotas;
+        //     })
+        // );
     }
 
   exibirErro() {
@@ -139,5 +164,9 @@ export class HomePage {
                 return possui;
             });
         }
+    }
+ 
+    possuiAvaliacoes(num){
+        return isNaN(num);
     }
 }

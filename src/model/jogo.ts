@@ -7,6 +7,7 @@ export class Jogo {
     private categoria: string;
     private img: string;
     private comentarios: Array<Comentario> = new Array<Comentario>();
+    private _notaMedia: number;
 
     static copia(dados: any): Jogo {
         let jogo: Jogo = new Jogo();
@@ -15,10 +16,16 @@ export class Jogo {
         jogo.categoria = dados['category'];
         jogo.nome = dados['name'];
         jogo.img = dados['img'];
+        let notaTotal: number = 0;
+        let qtdNotas: number = 0;
         dados['reviews'].forEach(comentario => {
             console.log(JSON.stringify(comentario))
-            jogo.comentarios.push(Comentario.copia(comentario))
+            let comentarioAux : Comentario = Comentario.copia(comentario);
+            jogo.comentarios.push(comentarioAux)
+            notaTotal += comentarioAux._nota;
+            qtdNotas++;
         });
+        jogo.notaMedia = notaTotal/qtdNotas;
         return jogo;
     }    
 
@@ -68,5 +75,13 @@ export class Jogo {
 
     get _img() {
         return this.img;
+    }
+    
+    get notaMedia(): number {
+        return this._notaMedia;
+    }
+    
+    set notaMedia(value: number) {
+        this._notaMedia = value;
     }
 }

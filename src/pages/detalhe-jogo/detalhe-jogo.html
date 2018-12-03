@@ -16,7 +16,8 @@
 <ion-content>
     <div class="detalheJogo">
         <div class="detalheJogo-img">
-            <img src="{{_jogo._img}}" />
+            <img *ngIf="_jogo._img != null"src="{{_jogo._img}}" />
+            <img *ngIf="_jogo._img == null" src="https://cdn0.iconfinder.com/data/icons/social-media-2104/24/social_media_social_media_logo_steam-512.png" />
         </div>
         <div>
             <span>Nome:{{_jogo._nome}}</span>
@@ -32,9 +33,13 @@
 
         <div (click)="irParaVerComentarios(_jogo._id)">
             <ion-card *ngFor="let comentario of _jogo._comentarios; let i = index" [attr.data-index]="i">
-                <ion-card-content *ngIf=" i == 0">
-                    <h2><strong> {{comentario._autor}} ({{comentario._data | date:"short" }})</strong></h2>
-                    <p>{{comentario._comentario}}</p>
+                <ion-card-content *ngIf="i == 0">
+                    <div class="comentario">
+                        <h2><strong> {{comentario._autor}}</strong></h2>
+                        <span class="comentario-nota">Nota: {{comentario._nota}}</span>
+                    </div>
+                    <span class="comentario-data">{{comentario._data | date:"short" }}</span>
+                    <p class="comentario-mensagem">{{comentario._comentario}}</p>
                 </ion-card-content>
             </ion-card>
             <div class="mais-comentarios"> Ver mais comentários </div>
