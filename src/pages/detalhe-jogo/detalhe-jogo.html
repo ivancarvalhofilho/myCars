@@ -16,22 +16,22 @@
 <ion-content>
     <div class="detalheJogo">
         <div class="detalheJogo-img">
-            <img src="{{_veiculo._img}}" />
+            <img src="{{_jogo._img}}" />
         </div>
         <div>
-            <span>Nome:{{_veiculo._modelo}} {{_veiculo._marca}}</span>
+            <span>Nome:{{_jogo._nome}}</span>
         </div>
 
         <div>
-            <span>Descrição:{{_veiculo._modelo}}</span>
+            <span>Descrição:{{_jogo._nome}} {{_jogo._categoria}}</span>
         </div>
         
         <div>
-            <span>Categoria:{{_veiculo._marca}}</span>
+            <span>Categoria:{{_jogo._categoria}}</span>
         </div>
 
-        <div (click)="irParaVerComentarios(_veiculo._id)">
-            <ion-card *ngFor="let comentario of _veiculo._comentarios; let i = index" [attr.data-index]="i">
+        <div (click)="irParaVerComentarios(_jogo._id)">
+            <ion-card *ngFor="let comentario of _jogo._comentarios; let i = index" [attr.data-index]="i">
                 <ion-card-content *ngIf=" i == 0">
                     <h2><strong> {{comentario._autor}} ({{comentario._data | date:"short" }})</strong></h2>
                     <p>{{comentario._comentario}}</p>

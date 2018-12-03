@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let comentario of _veiculo._comentarios">
+  <ion-card *ngFor="let comentario of _jogo._comentarios">
     <ion-card-content>
       <h2><strong>{{comentario._autor}} ({{comentario._data | date:"short" }})</strong></h2>
       <p>{{comentario._comentario}}</p>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Veiculo } from '../../model/veiculo';
+import { Jogo } from '../../model/jogo'; 
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { DetailsPage } from '../details/details';
 
@@ -18,12 +18,12 @@ import { DetailsPage } from '../details/details';
 })
 export class DetalheJogoPage {
 
-    private jogoId: number;
-    private veiculo: Veiculo;
+    private jogoId: string;
+    private jogo: Jogo;
 
     constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams) {
         this.jogoId = this.navParams.get("jogoId");
-        this.veiculo = new Veiculo();
+        this.jogo = new Jogo();
     }
 
     ionViewDidLoad() {
@@ -31,22 +31,22 @@ export class DetalheJogoPage {
     }
 
     ionViewDidEnter() {
-        this.api.obterVeiculo(this.jogoId).subscribe(
-            item => this.veiculo = Veiculo.copia(item)
+        this.api.obterJogo(this.jogoId).subscribe(
+            item => this.jogo = Jogo.copia(item)
         );
     }
     
-    irParaVerComentarios(id: number) {
+    irParaVerComentarios(id: string) {
         this.navCtrl.push(DetailsPage, {
-            veiculoId: id
+            jogoId: id 
         });
     }
 
-    set _veiculo(veiculo: Veiculo) {
-        this.veiculo = veiculo;
+    set _jogo(jogo: Jogo) {
+        this.jogo = jogo;
     }
 
-    get _veiculo() {
-        return this.veiculo;
+    get _jogo() {
+        return this.jogo;
     }
 }
