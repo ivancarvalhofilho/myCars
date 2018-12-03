@@ -14,9 +14,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'criar-editar-comentario.html',
 })
 export class CriarEditarComentarioPage {
+    private comentarioUsuarioId: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+        this.comentarioUsuarioId = this.navParams.get("comentarioUsuarioId");
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CriarEditarComentarioPage');

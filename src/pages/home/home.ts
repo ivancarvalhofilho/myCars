@@ -48,7 +48,8 @@ export class HomePage {
 
     irParaDetalheJogo(id: number) {
         this.navCtrl.push(DetalheJogoPage, {
-            jogoId: id
+            jogoId: id,
+            nomeUsuario: this.userName
         });
     }
     

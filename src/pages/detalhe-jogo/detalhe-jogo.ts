@@ -20,11 +20,14 @@ import { CriarEditarComentarioPage } from '../criar-editar-comentario/criar-edit
 export class DetalheJogoPage {
 
     private jogoId: string;
+    private nomeUsuario: string;
+    private comentarioUsuarioId: string = null;
     private jogo: Jogo;
     private _possuiComentario: boolean = false;
 
     constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams) {
         this.jogoId = this.navParams.get("jogoId");
+        this.nomeUsuario = this.navParams.get("nomeUsuario");
         this.jogo = new Jogo();
     }
 
@@ -37,7 +40,8 @@ export class DetalheJogoPage {
             item => this.jogo = Jogo.copia(item),
             null,
             () => this.jogo._comentarios.forEach(element => {
-                if(element._autor == "Danilo"){
+                if (element._autor == this.nomeUsuario){
+                    this.comentarioUsuarioId = element._id; 
                     this.possuiComentario = true; 
                     return 0;
                 }
@@ -46,7 +50,9 @@ export class DetalheJogoPage {
     }
 
     irParaCriarComentario () {
-        this.navCtrl.push(CriarEditarComentarioPage);
+        this.navCtrl.push(CriarEditarComentarioPage,{
+            comentarioUsuarioId: this.comentarioUsuarioId
+        });
     }
     
     irParaVerComentarios(id: string) {

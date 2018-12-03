@@ -33,6 +33,11 @@
                 <ion-input type="text"></ion-input>
             </ion-item>
         </ion-list>
-        <button (click)="cadastrarComentario()" ion-button color="secondary" block>Cadastrar</button>
+        <div  *ngIf="comentarioUsuarioId == null">
+            <button (click)="cadastrarComentario()" ion-button color="primary" block>Cadastrar</button>
+        </div>
+        <div *ngIf="comentarioUsuarioId != null">
+            <button (click)="editarComentario()" ion-button color="secondary" block>Editar</button>
+        </div>
     </div>
 </ion-content>
