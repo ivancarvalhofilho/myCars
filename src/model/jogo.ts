@@ -2,14 +2,16 @@ import { Comentario } from "./comentario";
 
 export class Jogo {
     private id: string;
-    private categoria: string;
     private nome: string;
+    private descricao : string;
+    private categoria: string;
     private img: string;
     private comentarios: Array<Comentario> = new Array<Comentario>();
 
     static copia(dados: any): Jogo {
         let jogo: Jogo = new Jogo();
         jogo.id = dados['_id'];
+        jogo.descricao = dados['_description'];
         jogo.categoria = dados['category'];
         jogo.nome = dados['name'];
         jogo.img = dados['img'];
@@ -42,6 +44,14 @@ export class Jogo {
 
     get _categoria() {
         return this.categoria;
+    }
+
+    set _descricao(descricao: string) {
+        this.descricao = descricao;
+    }
+
+    get _descricao() {
+        return this.descricao;
     }
 
     set _nome(nome: string) {

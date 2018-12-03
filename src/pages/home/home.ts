@@ -1,6 +1,6 @@
 import { RestApiProvider } from './../../providers/rest-api/rest-api';
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavParams, NavController, ToastController } from 'ionic-angular';
 import { Jogo } from '../../model/jogo';
 import { DetailsPage } from '../details/details';
 import { CommentPage } from '../comment/comment';
@@ -12,7 +12,8 @@ import { DetalheJogoPage } from '../detalhe-jogo/detalhe-jogo';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  private idUser : string;
+  private userName : string;
   private jogos: Array<Jogo>;
   private jogosFiltrados: Array<Jogo>;
 
@@ -23,7 +24,9 @@ export class HomePage {
   get _jogos() {
     return this.jogos;
   }
-
+  get _userName(){
+    return this.userName;
+  }
   set _jogosFiltrados(jogosFiltrados: Array<Jogo>) {
       this.jogosFiltrados = jogosFiltrados;
   }
@@ -32,7 +35,9 @@ export class HomePage {
         return this.jogosFiltrados;
   }
 
-    constructor(private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
+    constructor(private navParams: NavParams, private navCtrl: NavController, private api: RestApiProvider, private toastCtrl: ToastController) {
+        this.idUser = this.navParams.get("idUser");
+        this.userName = this.navParams.get("userName");
         this.jogos = new Array<Jogo>();
         this.jogosFiltrados = new Array<Jogo>();
     }
@@ -82,7 +87,6 @@ export class HomePage {
     this.api.obterJogos().subscribe(
       dados => {
         dados.forEach(element => {
-          console.log(JSON.stringify(element)+"\n")
         });
         this.carregarLista(dados);
         if (refresher) {
@@ -115,6 +119,7 @@ export class HomePage {
     }
 
     trocaListaJogos(codLista){
+        let user = this.userName;
         if(codLista == 1){
             $(".botoesRodape > div:first").removeClass("botoesRodape-inativo");
             $(".botoesRodape > div:last").addClass("botoesRodape-inativo");
@@ -125,7 +130,7 @@ export class HomePage {
             this.jogosFiltrados = this.jogos.filter(function (item) {
                 let possui: boolean = false;
                 item._comentarios.forEach(element => {
-                    if(element._autor.includes("Danilo")){
+                    if(element._autor.includes(user)){
                         possui = true;
                         return 0;
                     }

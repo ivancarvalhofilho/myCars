@@ -17,16 +17,16 @@
     <ion-list class="body">
 
         <ion-item>
-            <ion-label fixed>Username</ion-label>
-            <ion-input type="text" value=""></ion-input>
+            <ion-label fixed>Email</ion-label>
+            <ion-input [(ngModel)]="_email" type="text" value=""></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label fixed>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-label fixed>Senha</ion-label>
+            <ion-input [(ngModel)]="_senha" type="password"></ion-input>
         </ion-item>
         
-        <button (click)="irParaVerComentarios()" ion-button color="primary" block>Entrar</button>
+        <button (click)="logar()" ion-button color="primary" block>Entrar</button>
         <a (click)="irParaCadastrarConta()" style="text-decoration: underline">Criar nova conta</a>
 
     </ion-list>
