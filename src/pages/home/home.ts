@@ -24,7 +24,9 @@ export class HomePage {
   get _jogos() {
     return this.jogos;
   }
-
+  get _userName(){
+    return this.userName;
+  }
   set _jogosFiltrados(jogosFiltrados: Array<Jogo>) {
       this.jogosFiltrados = jogosFiltrados;
   }
@@ -117,6 +119,7 @@ export class HomePage {
     }
 
     trocaListaJogos(codLista){
+        let user = this.userName;
         if(codLista == 1){
             $(".botoesRodape > div:first").removeClass("botoesRodape-inativo");
             $(".botoesRodape > div:last").addClass("botoesRodape-inativo");
@@ -127,7 +130,7 @@ export class HomePage {
             this.jogosFiltrados = this.jogos.filter(function (item) {
                 let possui: boolean = false;
                 item._comentarios.forEach(element => {
-                    if(element._autor.includes(this.userName)){
+                    if(element._autor.includes(user)){
                         possui = true;
                         return 0;
                     }
