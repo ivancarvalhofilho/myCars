@@ -29,11 +29,15 @@ export class RestApiProvider {
     return this.http.put(this.API_URL_BASE + "games/" + id, veiculo);
   }
 
-  criarComentario(idJogo: string, nota: number, mensagem: string) {
-    return this.http.put(this.API_URL_BASE + "games/rate/" + idJogo, {idUser: idUsuario, userName: userName, rating: nota, message: mensagem});
+  criarComentario(idJogo: string,idUser:string,userName: string, nota: number, mensagem: string) {
+    return this.http.put(this.API_URL_BASE + "games/rate/" + idJogo, {idUser: idUser, userName: userName, rating: nota, message: mensagem});
   }
 
-  editarComentario(id: string, veiculo: any) {
-    return this.http.put(this.API_URL_BASE + "games/" + id, veiculo);
+  editarComentario(idJogo: string,idUser:string,userName: string, nota: number, mensagem: string) {
+    return this.http.put(this.API_URL_BASE + "games/rate/" + idJogo +"/"+ idUser,{userName: userName, rating: nota, message: mensagem});
+  }
+
+  deletarComentario(idJogo: string,idUser:string) {
+    return this.http.put(this.API_URL_BASE + "games/rate/" + idJogo+ "/"+ idUser, {});
   }
 }
