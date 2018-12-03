@@ -13,6 +13,7 @@ import { CommentPage } from '../pages/comment/comment';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
 import { DetalheJogoPage } from '../pages/detalhe-jogo/detalhe-jogo';
+import { CriarEditarComentarioPage } from '../pages/criar-editar-comentario/criar-editar-comentario';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DetalheJogoPage } from '../pages/detalhe-jogo/detalhe-jogo';
     DetailsPage,
     CadastroContaPage,
     DetalheJogoPage,
+    CriarEditarComentarioPage,
     CommentPage
   ],
   imports: [
@@ -37,6 +39,7 @@ import { DetalheJogoPage } from '../pages/detalhe-jogo/detalhe-jogo';
     DetailsPage,
     CadastroContaPage,
     DetalheJogoPage,
+    CriarEditarComentarioPage,
     CommentPage
   ],
   providers: [

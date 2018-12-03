@@ -41,7 +41,7 @@
         </div>
 
         <div *ngIf="!_possuiComentario">
-            <button  ion-button color="primary" block>Criar comentário</button>
+            <button (click)="irParaCriarComentario()" ion-button color="primary" block>Criar comentário</button>
         </div>
 
         <div *ngIf="_possuiComentario">

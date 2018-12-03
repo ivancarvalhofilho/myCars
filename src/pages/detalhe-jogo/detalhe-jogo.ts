@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Jogo } from '../../model/jogo'; 
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { DetailsPage } from '../details/details';
+import { CriarEditarComentarioPage } from '../criar-editar-comentario/criar-editar-comentario';
 
 /**
  * Generated class for the DetalheJogoPage page.
@@ -42,6 +43,10 @@ export class DetalheJogoPage {
                 }
             })
         );
+    }
+
+    irParaCriarComentario () {
+        this.navCtrl.push(CriarEditarComentarioPage);
     }
     
     irParaVerComentarios(id: string) {
