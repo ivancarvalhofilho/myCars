@@ -15,6 +15,7 @@
     left: 0;  
     right: 0;  
     margin: auto;
+    padding: 5px;
 }
 
 .detalheJogo > div{
@@ -29,4 +30,22 @@
     position: relative;
     top: -15px;
     right: 10px;
+}
+
+.comentario{
+    display: flex;
+    justify-content: space-between;
+}
+.comentario-mensagem:first-letter {
+    text-transform: uppercase;
+}
+.comentario-data {
+    font-size: 10px;
+    color: darkslategray;
+    position: relative;
+    top:-7px;
+}
+
+.comentario-nota {
+    
 }

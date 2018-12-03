@@ -25,15 +25,19 @@
             <ion-card-content (click)="irParaDetalheJogo(jogo._id)">
                 <div class="cardJogos">
                     <div class="cardJogos-img">
-                        <!-- <img src="{{jogo._img}}" /> -->
+                        <img *ngIf="jogo._img != null" src="{{jogo._img}}" />
+                        <img *ngIf="jogo._img == null"src="https://cdn0.iconfinder.com/data/icons/social-media-2104/24/social_media_social_media_logo_steam-512.png" />
                     </div>
                     <div class="cardJogos-conteudo">
                         <div class="cardJogos-conteudo-info">
                             <span>
-                                {{jogo._nome}} {{jogo._categoria}}
+                                {{jogo._nome}} 
                             </span>
-                            <span>
-                                Nota média
+                            <span *ngIf="possuiAvaliacoes(jogo.notaMedia)">
+                                Sem avaliações
+                            </span>
+                            <span *ngIf="!possuiAvaliacoes(jogo.notaMedia)">
+                                {{jogo.notaMedia}}
                             </span>
                         </div>
                         <div class="cardJogos-conteudo-icone">
