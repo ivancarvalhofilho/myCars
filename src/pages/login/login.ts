@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { CadastroContaPage } from '../cadastro-conta/cadastro-conta';
+import { RestApiProvider } from './../../providers/rest-api/rest-api';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -16,21 +18,29 @@ import { CadastroContaPage } from '../cadastro-conta/cadastro-conta';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,private api: RestApiProvider, public navParams: NavParams,private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  irParaVerComentarios() {
-    this.navCtrl.push(HomePage);
+  irParaVerComentarios(id: string, name: string) {
+    this.navCtrl.push(HomePage, {idUser: id, userName: name});
   }
-  logar() {
-      // TODOs
-      // criar regex validar email
-      // criar conexao server JSON
-  }
+  logar(email, senha) {
+      this.api.logar(email,senha).subscribe(
+        dados => {
+          console.log(JSON.stringify(dados))
+          if(dados == null){
+            this.toastCtrl.create({
+              duration: 3000,
+              message: "Erro ao carregar lista de jogos!"
+            }).present();
+          }
+          this.irParaVerComentarios(dados["_id"],dados["name"]);
+          });
+        }
+  
   irParaCadastrarConta() {
       this.navCtrl.push(CadastroContaPage);
   }

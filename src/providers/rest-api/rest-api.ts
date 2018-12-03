@@ -10,9 +10,9 @@ export class RestApiProvider {
   constructor(private http: HttpClient) { }
 
   logar(nome: string, senha: string): Observable<any> {
-    return this.http.post(this.API_URL_BASE + "login", {userEmail: nome, userPassword: senha});
+    return this.http.post(this.APILogin_URL_BASE + "login", {userEmail: nome, userPassword: senha});
   }
-  
+
   obterJogos(): Observable<any> {
     return this.http.get(this.API_URL_BASE + "games");
   }

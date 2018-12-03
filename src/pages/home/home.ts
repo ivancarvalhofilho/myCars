@@ -71,9 +71,6 @@ export class HomePage {
   atualizarListaJogos(refresher?) {
     this.api.obterJogos().subscribe(
       dados => {
-        dados.forEach(element => {
-          console.log(JSON.stringify(element)+"\n")
-        });
         this.carregarLista(dados);
         if (refresher) {
           refresher.complete();
