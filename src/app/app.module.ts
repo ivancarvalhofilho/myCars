@@ -9,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DetailsPage } from '../pages/details/details';
-import { CommentPage } from '../pages/comment/comment';
+import { Session } from '../providers/share/session';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { CadastroContaPage } from '../pages/cadastro-conta/cadastro-conta';
 import { DetalheJogoPage } from '../pages/detalhe-jogo/detalhe-jogo';
@@ -23,8 +23,7 @@ import { CriarEditarComentarioPage } from '../pages/criar-editar-comentario/cria
     DetailsPage,
     CadastroContaPage,
     DetalheJogoPage,
-    CriarEditarComentarioPage,
-    CommentPage
+    CriarEditarComentarioPage
   ],
   imports: [
     BrowserModule,
@@ -39,15 +38,15 @@ import { CriarEditarComentarioPage } from '../pages/criar-editar-comentario/cria
     DetailsPage,
     CadastroContaPage,
     DetalheJogoPage,
-    CriarEditarComentarioPage,
-    CommentPage
+    CriarEditarComentarioPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
-    RestApiProvider
+    RestApiProvider,
+    Session
   ]
 })
 export class AppModule {}

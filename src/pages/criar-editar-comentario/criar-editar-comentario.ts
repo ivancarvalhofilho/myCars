@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { RestApiProvider } from './../../providers/rest-api/rest-api';
+import { Session } from './../../providers/share/session';
 
 /**
  * Generated class for the CriarEditarComentarioPage page.
@@ -30,21 +31,20 @@ export class CriarEditarComentarioPage {
       this.mensagem = mensagem;
     }
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
+    constructor(public session: Session, public navCtrl: NavController, public navParams: NavParams, private api: RestApiProvider, private toastCtrl: ToastController) {
         this.comentarioUsuarioId = this.navParams.get("comentarioUsuarioId");
-        this.userId = this.navParams.get("userId");
+        this.userId = session.getId
         this.idJogo = this.navParams.get("idJogo");
-        this.nomeUsuario = this.navParams.get("nomeUsuario");
+        this.nomeUsuario = session.getUserName;
     }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CriarEditarComentarioPage' + this.comentarioUsuarioId);
+    console.log('ionViewDidLoad CriarEditarComentarioPage');
   }
 
     cadastrarComentario() {
       this.api.criarComentario(this.idJogo,this.userId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
         dados => {
-          console.log(JSON.stringify(dados))
           if(dados == null){
             this.toastCtrl.create({
               duration: 3000,
@@ -64,7 +64,6 @@ export class CriarEditarComentarioPage {
     editarComentario() {
       this.api.editarComentario(this.idJogo,this.userId,this.nomeUsuario,this.nota,this.mensagem).subscribe(
         dados => {
-          console.log(JSON.stringify(dados))
           if(dados == null){
             this.toastCtrl.create({
               duration: 3000,

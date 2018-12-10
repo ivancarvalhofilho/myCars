@@ -36,7 +36,9 @@ export class Jogo {
     get _comentarios() {
         return this.comentarios;
     }
-
+    get _ultimoComentario(){
+        return this.comentarios.lastIndexOf; 
+    }
     set _id(id: string) {
         this.id = id;
     }

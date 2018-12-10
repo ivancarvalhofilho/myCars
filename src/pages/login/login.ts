@@ -32,7 +32,6 @@ export class LoginPage {
   logar() {
       this.api.logar(this.email ,this.senha).subscribe(
         dados => {
-          console.log(JSON.stringify(dados))
           if(dados == null){
             this.toastCtrl.create({
               duration: 3000,

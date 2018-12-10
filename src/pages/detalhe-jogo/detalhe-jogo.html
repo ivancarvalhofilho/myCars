@@ -33,7 +33,7 @@
 
         <div (click)="irParaVerComentarios(_jogo._id)">
             <ion-card *ngFor="let comentario of _jogo._comentarios; let i = index" [attr.data-index]="i">
-                <ion-card-content *ngIf="i == 0">
+                <ion-card-content *ngIf="i == _jogo._comentarios.length-1">
                     <div class="comentario">
                         <h2><strong> {{comentario._autor}}</strong></h2>
                         <span class="comentario-nota">Nota: {{comentario._nota}}</span>

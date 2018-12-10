@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ToastController} from 'ionic-angular';
 import { Jogo } from '../../model/jogo'; 
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
+import { Session } from '../../providers/share/session';
 import { DetailsPage } from '../details/details';
 import { CriarEditarComentarioPage } from '../criar-editar-comentario/criar-editar-comentario';
 
@@ -19,6 +20,7 @@ import { CriarEditarComentarioPage } from '../criar-editar-comentario/criar-edit
 })
 export class DetalheJogoPage {
 
+
     private jogoId: string;
     private nomeUsuario: string;
     private userId: string;
@@ -26,19 +28,18 @@ export class DetalheJogoPage {
     private jogo: Jogo;
     private _possuiComentario: boolean = false;
 
-    constructor(public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams, private toastCtrl : ToastController) {
+    constructor(public session : Session, public navCtrl: NavController, private api: RestApiProvider, public navParams: NavParams, private toastCtrl : ToastController) {
         this.jogoId = this.navParams.get("jogoId");
-        this.userId = this.navParams.get("userId");
-        this.nomeUsuario = this.navParams.get("nomeUsuario");
+        this.userId = session.getId;
+        this.nomeUsuario = session.getUserName;
         this.jogo = new Jogo();
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad DetalheJogoPage');
     }
-
+    
     ionViewDidEnter() {
-        console.log('ionViewDidLoad DetalheJogoPage  '+this.nomeUsuario);
         this.api.obterJogo(this.jogoId).subscribe(
             item => this.jogo = Jogo.copia(item),
             null,
@@ -80,10 +81,8 @@ export class DetalheJogoPage {
     }
 
     deletarComentario() {
-        console.log(this.jogoId + this.userId)
         this.api.deletarComentario(this.jogoId,this.userId).subscribe(
           dados => {
-            console.log(JSON.stringify(dados))
             if(dados == null){
               this.toastCtrl.create({
                 duration: 3000,
