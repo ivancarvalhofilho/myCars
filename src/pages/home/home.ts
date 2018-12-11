@@ -125,7 +125,7 @@ export class HomePage {
             this.jogosFiltrados = this.jogos.filter(function (item) {
                 let possui: boolean = false;
                 item._comentarios.forEach(element => {
-                    if(element._autor.includes(user)){
+                    if (element._autor != null && element._autor.includes(user)){
                         possui = true;
                         return 0;
                     }
