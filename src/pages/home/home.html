@@ -46,15 +46,29 @@
                     </div>
                 </div>
             </ion-card-content>
-            <!-- <ion-row>
-                <ion-col>
-                    <button ion-button full icon-only color="secondary" (click)="irParaAdicionarComentario(jogo._id)">
-                        <ion-icon name="chatbubbles"></ion-icon>
-                        Comentar
-                    </button>
-                </ion-col>
-            </ion-row> -->
         </ion-card>
+
+        <div *ngIf="_jogosFiltrados.length == 0 && carregadoFlag && !_filtroTexto">
+            <div class="cardJogos-conteudo-vazio">
+                <span>
+                    Nenhum jogo cadastrado
+                </span>
+            </div>
+        </div>
+        <div *ngIf="_jogosFiltrados.length == 0 && !carregadoFlag">
+            <div class="cardJogos-conteudo-vazio">
+                <span>
+                    Carregando lista...
+                </span>
+            </div>
+        </div>
+        <div *ngIf="_jogosFiltrados.length == 0 && carregadoFlag && _filtroTexto.length != 0">
+            <div class="cardJogos-conteudo-vazio">
+                <span>
+                    Nenhum jogo com o nome pesquisado
+                </span>
+            </div>
+        </div>
     </div>
 
     <div class="botoesRodape">

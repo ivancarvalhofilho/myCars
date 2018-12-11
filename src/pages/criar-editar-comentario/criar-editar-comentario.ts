@@ -85,21 +85,6 @@ export class CriarEditarComentarioPage {
   editarComentario() {
     this.deletarComentario();
     this.cadastrarComentario();
-    // this.api.editarComentario(this.idJogo, this.userId, this.nomeUsuario, this.nota, this.mensagem).subscribe(
-    //     dados => {
-    //         if (dados == null) {
-    //             this.toastCtrl.create({
-    //                 duration: 3000,
-    //                 message: "Erro ao editar comentario!"
-    //             }).present();
-    //         } else {
-    //             this.toastCtrl.create({
-    //                 duration: 3000,
-    //                 message: "Comentario editado com sucesso!"
-    //             }).present();
-    //             this.navCtrl.pop()
-    //         }
-    //     });
   }
 
   deletarComentario() {

@@ -100,3 +100,12 @@
     background-color: #a8a8a8;
     color: white; 
 }
+
+.cardJogos-conteudo-vazio{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 600;
+}
